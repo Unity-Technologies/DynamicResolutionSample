@@ -12,7 +12,7 @@ The purpose of this repository is to provide a simple, easy to understand script
 
 ## How Do I Use it?
 
-First, make sure that your project is set up to allow for dynamic resolution.  This means checking the **Allow Dynamic Resolution** box on every camera you want to be scaled (described [here](https://docs.unity3d.com/Manual/DynamicResolution.html)), and in the case of HDRP also configuring it in your HDRP asset (described [here](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@latest?subfolder=/manual/Dynamic-Resolution.html)).
+First, make sure that your project is set up to allow for dynamic resolution.  This means checking the **Allow Dynamic Resolution** box on every camera you want to be scaled (described [here](https://docs.unity3d.com/Manual/DynamicResolution.html)), and in the case of HDRP also configuring it in your HDRP asset (described [here](https://docs.unity3d.com/Packages/com.unity.render-pipelines.high-definition@latest?subfolder=/manual/Dynamic-Resolution.html)).  Since this sample utilizes the FrameTimingManager, also check the **Frame Timing Stats** checkbox in player settings for each desired platform.
 
 Second, drop the DynamicResolution.cs file from this repository into your project and attach it to something in the scene.  The single rule here is that you only want one instance of this script running at any given time.  Breaking this rule should have no functional effect on scaling results but will cause unneeded time to be wasted in collecting the timing data mutliple times per frame.
 
@@ -70,7 +70,7 @@ In the situation where the script might perform the small counter increment, the
 ```HeadroomThreshold``` - Defines a minimum fraction of desired frametime that must be available to consider a scale up.  By default it is set to 0.06, or 6% of target.<br>
 ```DeltaThreshold``` - Defines a maximum fraction of desired frametime that the current GPU delta can be to consider a scale up.  By default it is set to 0.035, or 3.5% of target.
 
-The defaults have been set such that a title needs more than 1 ms of headroom and time delta must be less than 0.5833 ms at 60 fps to trigger a small counter increment towards a scale up.  The headroom control is designed to be tuned against how likely a single spike is to be large enough to push a title over target framewhere, whereas the delta control is for when there could be plenty of headroom but the nature of spikes makes it hard to predict how accurate our heuristic is going to be at staying within the vblank.
+The defaults have been set such that a title needs more than 1 ms of headroom and time delta must be less than 0.5833 ms at 60 fps to trigger a small counter increment towards a scale up.  The headroom control is designed to be tuned against how likely a single spike is to be large enough to push a title over target framerate, whereas the delta control is for when there could be plenty of headroom but the nature of spikes makes it hard to predict how accurate our heuristic is going to be at staying within the vblank.
 
 #### ScaleIncrease and ScaleHeadroomClamp Group ####
 
