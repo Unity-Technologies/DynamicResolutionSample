@@ -313,14 +313,9 @@ public class DynamicResolution : MonoBehaviour
 #if ENABLE_DYNAMIC_RESOLUTION_DEBUG
     private void OnGUI()
     {
-#if PIPELINE_IMPLEMENTS_DRH
-        float curScale = DynamicResolutionHandler.instance.GetCurrentScale();
-        int rezWidth = (int)Mathf.Ceil(curScale * Screen.currentResolution.width);
-        int rezHeight = (int)Mathf.Ceil(curScale * Screen.currentResolution.height);
-#else
-        int rezWidth = (int)Mathf.Ceil(ScalableBufferManager.widthScaleFactor * Screen.currentResolution.width);
-        int rezHeight = (int)Mathf.Ceil(ScalableBufferManager.heightScaleFactor * Screen.currentResolution.height);
-#endif
+        int rezWidth = (int)Mathf.Ceil(ScalableBufferManager.widthScaleFactor * Screen.width);
+        int rezHeight = (int)Mathf.Ceil(ScalableBufferManager.heightScaleFactor * Screen.height);
+        float curScale = ScalableBufferManager.widthScaleFactor;
 
         DebugStyle = GUI.skin.box;
         DebugStyle.fontSize = 20;
@@ -332,11 +327,7 @@ public class DynamicResolution : MonoBehaviour
                 SystemEnabled,
                 rezWidth,
                 rezHeight,
-#if PIPELINE_IMPLEMENTS_DRH
                 curScale,
-#else
-                Mathf.Lerp(MinScaleFactor, MaxScaleFactor, CurrentScaleFactor),
-#endif
                 GPUFrameTime,
                 CPUFrameTime),
             DebugStyle);
