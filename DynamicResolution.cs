@@ -277,10 +277,8 @@ public class DynamicResolution : MonoBehaviour
 
     private void Start()
     {
-        // Metal on iOS will fail the timer frequency check, but we know it works so skip the check in that case.
-#if UNITY_IOS
+        // Metal will fail the timer frequency check, but we know it works so skip the check in that case.
         if (SystemInfo.graphicsDeviceType != GraphicsDeviceType.Metal)
-#endif
         {
             // If either of these report zero it means the platform doesn't support dynamic resolution.
             if (FrameTimingManager.GetCpuTimerFrequency() == 0 || FrameTimingManager.GetGpuTimerFrequency() == 0)
