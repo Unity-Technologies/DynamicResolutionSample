@@ -78,7 +78,7 @@ Once a scale up has been triggered the script then needs to determine how much t
 
 ```ScaleIncreaseBasis``` - The starting point for the scale up amount.  By default it is the lesser of the two threshold controls.<br>
 ```ScaleHeadroomClampMin``` - The lower bound of the headroom clamp and range remap, it should be set to a minimum of 0 and less than the clamp max.  By default it is set to 0.1.<br>
-```ScaleHeadroomClampMax``` - The upper bound of the headroom clamp and range remap, it should be set to great than the clamp min and a maximum of 1.  By default it is set to 0.5.<br>
+```ScaleHeadroomClampMax``` - The upper bound of the headroom clamp and range remap, it should be set to greater than the clamp min and a maximum of 1.  By default it is set to 0.5.<br>
 ```ScaleIncreaseSmallFactor``` - The minimum multiplier against the remapped scale increase factor.  By default it is set to 0.25.<br>
 ```ScaleIncreaseBigFactor``` - The maximum multiplier against the remapped scale increase factor.  By default it is set to 1.
 
